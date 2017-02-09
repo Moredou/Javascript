@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trun around</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="inputDiv">
+                <input type="text" id="box1">
+                <input type="text" id="box2">
+            </div>
+            <br/>
+                <div class="buttonDiv">
+                <input type="button" id="button1" value=">>">
+                <input type="button" id="pause" value="pause">
+                <input type="button" id="button2" value="<<">
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+    </body>
+
+</html>
