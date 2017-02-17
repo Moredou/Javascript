@@ -1,0 +1,22 @@
+[
+  {
+    "name" : "Ajax",
+    "addr" : "New Jersey",
+    "email" : "Ajax@nucc.com",
+    "phone" : "526-987-123"
+  },
+   {
+    "name" : "Simon",
+    "addr" : "CHINA",
+    "email" : "simonliuwk@gmail.com",
+    "phone" : "516-974-7088"
+
+  },
+  {
+    "name" : "Liu",
+    "addr" : "Shanghai",
+    "email" : "422210880qq.com",
+    "phone" : "987-654-345"
+
+  }
+]

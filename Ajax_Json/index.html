@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Infomation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>User Infomation</h1>
+        </div>
+        <div class="showInfo_btn">
+          <input type="button" class="" id="getInfo" onclick="showInfo()" value="ShowInfo" />
+          <input type="button" class="" id="addInfo" onclick="addForm()" value="AddNewInfo" />
+          </div>
+
+        <div id="infoTable">
+            <div id="abc">  </div>
+        </div>
+
+        <div class="formdiv">
+          <form id="inputboxs">
+            Name : <input type="text" id="newName" class="inputblk" name="Name">
+            <br>
+            Address : <input type="text" id="newAddress" class="inputblk" name="Address">
+            <br>
+            Email : <input type="text" id="newEmail" class="inputblk" name="Email">
+            <br>
+            Phone : <input type="text" id="newPhone" class="inputblk" name="Phone">
+            <br>
+            <input type="button" class="" id="submit" onclick="addNewInfo()" value="Submit" />
+            <input type="button" class="" id="cancel" onclick="cancelFrom()" value="Cancle" />
+          </form>
+
+
+        </div>
+
+      </div>
+    <script src='script.js'></script>
+    </body>
+</html>
+
+
