@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+     <style type="text/css" >
+    *{
+        margin:0;
+        padding:0;
+    }
+    #box1{
+        width:400px;
+        height:200px;
+        background-color:#f9f9f9;
+        border: 1px solid #ccc;
+        position: absolute;
+        left:50%;
+        top:50%;
+        margin:-100px 0 0 -200px;
+        border-radius: 4px;
+        box-shadow: 0 0 15px #ddd;
+        display:none;
+
+    }
+
+      #box2{
+
+        width:400px;
+        height:200px;
+        background-color:#f9f9f9;
+        border: 1px solid #ccc;
+        position: absolute;
+        display:none;
+        margin:0;
+        border-radius: 4px;
+        box-shadow: 0 0 15px #ddd;
+
+
+    }
+
+    .title{
+        padding: 10px 20px;
+        background-color:#f1f1f1;
+        border-bottom: 1px solid #ddd;
+        font-size:14px; color:#333;
+        cursor: move;
+    }
+    .login{
+        padding:30px 0 0 50px;
+
+    }
+    .login p{
+        margin-bottom: 10px;
+        font-size:14px;
+    }
+    .login input.text{
+        width: 200px;
+        padding:5px;
+        border:1px solid #ddd;
+        vertical-align:middle;
+
+    }
+
+    .login input.btn{
+        width:70px;
+        padding: 6px;
+        border: 1px solid #ddd;
+        margin-left: 41px;
+        cursor: move;
+
+    }
+
+     </style>
+  </head>
+
+  <body>
+    <button  onclick="ShowBox(1)">button1</button>
+    <button  onclick="ShowBox(2)">button2</button>
+
+    <div id="box1" class="drag darg_container">
+        <h2 class="title darg_header">Login <button onClick="closeBox(1)">X</button></h2>
+        <form action="">
+            <p><label>User:</label><input type="text" name="" id="" class="text"></p>
+            <p><label>Password</label><input type="password" name="" id="" class="text"></p>
+            <p><input type="submit" name="" id="" value="submit" class="btn"></p>
+        </form>
+
+    </div>
+
+    <div id="box2" class="drag darg_container">
+        <h2 class="title darg_header">Login <button onClick="closeBox(2)">X</button></h2>
+        <form action="">
+            <p><label>User:</label><input type="text" name="" id="" class="text"></p>
+            <p><label>Password</label><input type="password" name="" id="" class="text"></p>
+            <p><input type="submit" name="" id="" value="submit" class="btn"></p>
+        </form>
+
+    </div>
+<script type="text/javascript">
+
+window.onload = function(){
+
+
+   var oBoxs = document.querySelectorAll(".darg_container"),
+   drag_index=0;
+   oBoxs.forEach(function(oBox){
+     initDrag(oBox)
+   })
+  function initDrag(oBox){
+    var oBtn = oBox.querySelector(".darg_header");
+    var disX = 0;
+    var disY = 0;
+    oBtn.onmousedown = function(ev){
+        var oEvent = ev||event;
+        disX = oEvent.clientX - oBox.offsetLeft;
+        disY = oEvent.clientY - oBox.offsetTop;
+        oBox.style.cursor = "crosshair";
+        document.onmousemove = function(ev){
+            var oEvent = ev||event;
+            var l = oEvent.clientX - disX;
+            var t = oEvent.clientY - disY;
+            oBox.style.margin = 0;
+            if(l<0){
+                l=0;
+            }else if(l > document.documentElement.clientWidth-oBox.offsetWidth){
+                l = document.documentElement.clientWidth - oBox.offsetWidth;
+            }
+            if(t< 0 ){
+                t = 0;
+            }else if(t>document.documentElement.clientHeight- oBox.offsetHeight){
+                t = document.documentElement.clientHeight - oBox.offsetHeight;
+            }
+            oBox.style.left = l +"px";
+            oBox.style.top = t + "px";
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+            oBox.style.cursor="default";
+        }
+        return false;
+    }
+    oBox.onmousedown=function(){
+      this.style.zIndex =++drag_index;
+    }
+    window.onresize = function(){
+        if(oBox.offsetLeft>document.documentElement.clientWidth-oBox.offsetWidth){
+            oBox.style.left=document.documentElement.clientWidth-oBox.offsetWidth+"px";
+        }
+        if(oBox.offsetTop>document.documentElement.clientHeight-oBox.offsetHeight){
+            oBox.style.top=document.documentElement.clientHeight-oBox.offsetHeight+"px";
+
+        }
+    }
+  }
+
+ this.ShowBox = function(id){
+   var boxId = "box" + id;
+   document.getElementById(boxId).style.display="inline";
+   document.getElementById(boxId).style.zIndex = ++drag_index;
+ }
+
+}
+
+
+
+ function closeBox(id){
+   var boxId = "box" + id;
+   document.getElementById(boxId).style.display="none";
+ }
+
+
+</script>
+  </body>
+
+</html>
